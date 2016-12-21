@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>运行代码</button>
+	<textarea name="" id="" cols="40" rows="10"></textarea>
+<script>
+	window.onload=function () {
+		var oBtn=document.getElementsByTagName('button')[0];
+		var oTxt=document.getElementsByTagName('textarea')[0];
+
+		oBtn.onclick=function () {
+			//window.open的第一个参数是网址，第二个参数是_self（自身打开，或关闭原网页再打开）或者_blank （新打开网页）
+			var newWin=window.open('about:blank','_blank');
+			//document.write() 会把网页的源代码变成括号里的内容，慎用
+			newWin.document.write(oTxt.value);
+		}
+	}
+</script>
+</body>
+</html>

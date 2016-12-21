@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			height: 50px;
+			width: 50px;
+			background: red;
+			position: absolute;
+			/*margin: 10px;*/
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	function getPos(event) {
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+			//但凡用到clientX和clientY的地方一定要加scrollTop和scrollLeft
+			return {x:event.clientX+scrollLeft,y:event.clientY+scrollTop}
+	}
+	document.onmousemove=function(ev) {
+	var aDiv=document.getElementsByTagName('div');
+
+		var oEvent=ev||event;
+		var pos=getPos(oEvent);
+		//让每一个div跟着它前一个走，即每一个div的left和top都等于它前一个div的offsetLeft和offsetRight，才会出现效果
+		//第一个div跟着鼠标走
+		for (var i = aDiv.length-1; i >0 ; i--) {
+			aDiv[i].style.left=aDiv[i-1].offsetLeft+'px';	
+			aDiv[i].style.top=aDiv[i-1].offsetTop+'px';	
+		}
+		aDiv[0].style.left=pos.x+'px';
+		aDiv[0].style.top=pos.y+'px';
+	}
+</script>
+</html>

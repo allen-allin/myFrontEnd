@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+	<button>提交</button><br>
+	<textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oIpt=document.getElementsByTagName('input')[0];
+	var oBtn=document.getElementsByTagName('button')[0];
+	var oTxt=document.getElementsByTagName('textarea')[0];
+
+	//点击提交
+	oBtn.onclick=function() {
+		oTxt.value+=oIpt.value+'\n';
+		oIpt.value='';
+	}
+
+	//ctrl+回车 提交
+	oIpt.onkeydown=function(ev) {
+		var oEvent=ev||event;
+		if (oEvent.keyCode==13 && oEvent.ctrlKey) {
+			oTxt.value+=oIpt.value+'\n';
+			oIpt.value='';
+		}
+	}
+</script>
+</html>

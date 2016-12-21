@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			height: 400px;
+			width: 400px;
+			margin: 10px auto;
+			border: 1px solid black;
+		} 
+		ul li {
+			list-style: none;
+			padding: 4px;
+			border-bottom: 1px dashed #A357A7;
+			filter: alpha(opacity:0);
+			opacity: 0;
+		}
+	
+	</style>
+</head>
+<body>
+	<textarea name="title" id="" cols="40" rows="5"></textarea><br>
+	<button>发布</button>
+	<ul>
+		<li></li>
+	</ul>
+<script src="完美运动框架.js"></script>
+<script>
+	var oBtn=document.getElementsByTagName('button')[0];
+	var oTxt=document.getElementsByTagName('textarea')[0];
+	var oUl=document.getElementsByTagName('ul')[0];
+
+	oBtn.onclick=function() {
+		var oLi=document.createElement('li');
+		oLi.innerHTML=oTxt.value;
+		oTxt.value='';
+		if (oUl.children.length>0) {
+			oUl.insertBefore(oLi,oUl.children[0]);
+		} else {
+			oUl.appendChild(oLi);
+		}
+		var iHeight=oLi.offsetHeight;
+		oLi.style.height='0px';
+		startMove(oLi,{height:iHeight},function() {
+			startMove(oLi,{opacity:100})
+		})
+	}
+
+</script>
+</body>
+</html>

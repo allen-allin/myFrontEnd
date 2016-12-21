@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 300px;
+			height: 250px;
+			overflow: hidden;
+			position: relative;
+		}
+		div img {
+			width: 300px;
+			height: 250px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img id="img1" src="1.jpg" alt="">
+	</div>
+<script src="完美运动框架.js"></script>
+<script>
+	var oImg=document.getElementsByTagName('img')[0];
+	oImg.onmouseover=function() {	
+		startMove(this,{width:400,height:350,top:-50,left:-50})
+	}
+	oImg.onmouseout=function() {	
+		startMove(this,{width:300,height:250,top:0,left:0})
+	}
+</script>
+</body>
+</html>

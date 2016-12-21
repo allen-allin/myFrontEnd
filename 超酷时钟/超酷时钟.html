@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="background: black;color: white;text-align: center;font-size: 50px;   ">
+	<img src="images时钟/0.png" alt="">
+	<img src="images时钟/0.png" alt="">
+	:
+	<img src="images时钟/0.png" alt="">
+	<img src ="images时钟/0.png" alt="">
+	:
+	<img src="images时钟/0.png" alt="">
+	<img src="images时钟/0.png" alt="">
+<script>
+	function toDb(n) {					//这个函数是为了让时/分/秒 的个位数转换成两位数,														同时用加号把数字变成字符串
+		if (n<10) {
+			return '0'+n;
+		} else {
+			return ''+n;
+		}
+	}
+	function tick() {
+		var oImg=document.getElementsByTagName('img');
+		var oDate=new Date();
+		var str=toDb(oDate.getHours())+toDb(oDate.getMinutes())+toDb(oDate.getSeconds());
+		var timer;
+		for (var i = 0; i < oImg.length; i++) {
+		oImg[i].src="images时钟/"+str.charAt(i)+".png";    //为了兼容低版本浏览器,用str.charAt(i)代替str[i]
+		}	
+	}
+	tick();			//先立即执行一下tick函数
+	setInterval(tick,1000);  //再让tick每1秒执行一次
+</script>
+</body>
+</html>

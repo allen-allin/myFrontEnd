@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ 	<style>
+	#div1	{
+		width: 100px;
+		height: 100px;
+		background: #EB898D;
+		margin: 20px;
+		float: left;
+	}
+	#div2  {
+		width: 300px;
+		height: 300px;
+		background: #6BE9F3;
+		margin: 20px;
+		float: left;
+		display: none;
+	}
+ 	</style>
+ </head>
+ <body>
+ 	<div id="div1"></div>
+ 	<div id="div2"></div>
+ <script>
+ 	var oDiv1=document.getElementById('div1');
+ 	var oDiv2=document.getElementById('div2');
+ 	var timer1;
+ 	var timer2;
+ 	oDiv1.onmouseover=function () {
+ 		clearTimeout(timer2)
+ 		oDiv2.style.display='block';
+ 	}
+ 	oDiv1.onmouseout=function () {
+ 		timer1=setTimeout(function () {
+ 		oDiv2.style.display='none';
+ 		},1000)
+ 	}
+ 	oDiv2.onmouseover=function() {
+ 		clearTimeout(timer1);
+ 	}
+ 	oDiv2.onmouseout=function() {
+ 		timer2=setTimeout(function (){
+ 			oDiv2.style.display='none';
+ 		},500)
+ 	}
+ </script>
+ </body>
+ </html> 

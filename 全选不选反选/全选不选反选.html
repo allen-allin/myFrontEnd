@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	window.onload=function()
+	{
+		var obtn1=document.getElementById('btn1');
+		var obtn2=document.getElementById('btn2');
+		var obtn3=document.getElementById('btn3');
+		var oDiv=document.getElementById('div1');
+		var cbx=oDiv.getElementsByTagName('input');  //获取的cbx为数组  注意Elements为复数
+		//getElementsByTagName和getElementById前面不一定是document.   也可以是变量名
+		obtn1.onclick=function () {
+			for (var i = 0; i < cbx.length; i++)	//cbx.length为该数组的元素个数
+			 {
+				cbx[i].checked=true;
+			}			
+		}
+		obtn2.onclick=function(){
+			for (var i = 0; i < cbx.length; i++) {
+				cbx[i].checked=false;
+			}
+		}		
+		obtn3.onclick=function () {
+			for (var i = 0; i < cbx.length; i++) {
+				if (cbx[i].checked==true) {  //这里必须要用==   不能用=
+					cbx[i].checked=false;
+				}else{
+					cbx[i].checked=true;
+				}
+			}			
+		}
+	}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" value="全选">
+	<input id="btn2" type="button" value="不选">
+	<input id="btn3" type="button" value="反选"><br>
+	<div id="div1">
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+	</div>
+</body>
+</html>

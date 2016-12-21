@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table {
+				border-collapse: collapse;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+	<input id="txt1" type="text">
+	<input id="txt2" type="text">
+	<button id="btn1">添加</button>
+	<input id="txt3" type="text">
+	<button id="btn2">搜索</button>
+	<table width="600px" border="1px solid black">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>name</td>
+				<td>age</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>df</td>
+				<td>5</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>df</td>
+				<td>4</td>
+				<td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>df</td>
+				<td>4</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>we</td>
+				<td>3</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>hh</td>
+				<td>2</td>
+				<td></td>
+			</tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>
+	</body>
+	<script>
+		var oTab=document.getElementsByTagName('table')[0];
+		var oName=document.getElementById('txt1');
+		var oAge=document.getElementById('txt2');
+		var oSearch=document.getElementById('txt3');
+		var oBtn1=document.getElementById('btn1');
+		var oBtn2=document.getElementById('btn2');
+		var id=oTab.tBodies[0].rows.length+1;
+		oBtn1.onclick=function() {
+			var oTr=document.createElement('tr');
+			oTab.tBodies[0].appendChild(oTr);
+
+			var oTd=document.createElement('td');
+			oTd.innerHTML=id++;
+			oTr.appendChild(oTd);
+
+			var oTd=document.createElement('td');
+			oTd.innerHTML=oName.value;
+			oName.value='';
+			oTr.appendChild(oTd);
+
+
+			var oTd=document.createElement('td');
+			oTd.innerHTML=oAge.value;
+			oAge.value='';
+			oTr.appendChild(oTd);
+
+			var oTd=document.createElement('td');
+			oTd.innerHTML='<a href="#">删除</a>'
+			oTr.appendChild(oTd);
+
+			var aA=oTr.getElementsByTagName('a');
+			for (var i = 0; i < aA.length; i++) {
+				aA[i].onclick=function() {
+					oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+			}
+		}
+
+		oBtn2.onclick=function() {
+			for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+				oTab.tBodies[0].rows[i].style.background='';
+				var sTxt=oSearch.value.toLowerCase();
+				var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+				// if (sTxt==sTab) {		//忽略大小写搜索
+				// 	oTab.tBodies[0].rows[i].style.background='yellow';
+				// }
+				// 模糊搜索：
+				// if (sTab.search(sTxt)!=-1) 	{
+				// 	oTab.tBodies[0].rows[i].style.background='yellow';
+				// }
+				var arr=sTxt.split(' ');   //多关键字搜索
+				for (var  j= 0; j < arr.length; j++) {
+					if (sTab.search(arr[j]!=-1)) {
+						oTab.tBodies[0].rows[i].style.background='yellow';				
+					}
+				}
+			}
+		}
+	</script>
+</html>

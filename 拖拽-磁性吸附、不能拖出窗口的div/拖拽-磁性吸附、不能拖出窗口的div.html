@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#div1 {
+		width: 900px;
+		height: 700px;
+		position: relative;
+		background: gray;
+	}
+	#div2 {
+		width: 200px;
+		height: 200px;
+		background: red;
+		position: absolute;
+	}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+<script>
+	var oDiv1=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+
+	oDiv2.onmousedown=function(ev) {
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-oDiv2.offsetLeft;
+		var disY=oEvent.clientY-oDiv2.offsetTop;
+
+		document.onmousemove=function(ev) {
+			var oEvent=ev||event;
+			var l=oEvent.clientX-disX;
+			var t=oEvent.clientY-disY;
+
+			/*为防止div被拖拽出他的父级div，需要用以下的语句来修正位置，不让div出他的父级div
+			if (l<0) {
+				l=0;
+			} else if (l>oDiv1.offsetWidth-oDiv2.offsetWidth) {
+				l=oDiv1.offsetWidth-oDiv2.offsetWidth;
+			}
+			if (t<0) {
+				t=0;
+			} else if (t>oDiv1.offsetHeight-oDiv2.offsetHeight) {
+				t=oDiv1.offsetHeight-oDiv2.offsetHeight;
+			}*/
+
+
+
+			//若想要磁性吸附，则修改一下if...else语句的判断条件即可，
+			//例如：想让div在靠近左侧的时候就自动贴过去，让当l<100的时候把l变成0即可
+			
+			if (l<100) {
+				l=0;
+			} else if (l>oDiv1.offsetWidth-oDiv2.offsetWidth-100) {
+				l=oDiv1.offsetWidth-oDiv2.offsetWidth;
+			}
+			if (t<100) {
+				t=0;
+			} else if (t>oDiv1.offsetHeight-oDiv2.offsetHeight-100) {
+				t=oDiv1.offsetHeight-oDiv2.offsetHeight;
+			}
+			oDiv2.style.left=l+'px';
+			oDiv2.style.top=t+'px';
+		}
+
+		document.onmouseup=function() {
+			document.onmousemove='';
+			document.onmouseup='';
+		}
+	}
+</script>
+</body>
+</html>

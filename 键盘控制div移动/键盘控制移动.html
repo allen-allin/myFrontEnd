@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1</title>
+	<style>
+		div {
+			height: 200px;
+			width: 200px;
+			background: red;
+			position: absolute;	
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+<script>
+	var oDiv=document.getElementsByTagName('div')[0];
+	document.onkeydown=function(ev) {
+		var oEvent=ev||event;
+		if (oEvent.keyCode==37) {
+			oDiv.style.left=oDiv.offsetLeft-200+'px';
+		} else if (oEvent.keyCode==39) {
+			oDiv.style.left=oDiv.offsetLeft+200+'px';
+		} else if (oEvent.keyCode==38) {
+			oDiv.style.top=oDiv.offsetTop-200+'px';
+		} else {
+			oDiv.style.top=oDiv.offsetTop+200+'px';
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="reset.css">
+	<style>
+		#container{
+			width: 210px;
+			height: 376px;
+			background: #eae9e9;
+			padding:20px;
+		}
+		#div1{
+			width: 210px;
+			height: 264px;
+			
+
+		}
+		#div2{
+			width: 210px;
+			height: 102px;
+			
+		}
+		li{
+			width: 58px;
+			height: 54px;
+			background: #424242;
+			margin: 5px;
+			border: 1px solid blue;
+			float: left;
+		}
+		li h2{
+			font-size: 20px; padding-top: 5px;text-align: center;
+		}
+		li p{
+			font-size: 12px;text-align: center;
+		}
+		#container .towhite{
+			background:white;
+		}
+	
+		 .text { border: 1px solid #fff; padding-top: 10px; background: #f1f1f1;  }
+		 .text h2 {font-size: 14px; margin-bottom: 10px;text-align: center; }
+		 .text p { font-size: 12px; line-height: 18px; }
+		</style>
+	<script>
+	 	window.onload=function(){
+	 		var aDatas=[
+	 			"快过年了，大家可以商量着去哪玩吧～",
+	"精通JavaScript开发课程 - 结课标准 - 有十条标准可让大家修练成JS高手……",
+	"HTML5开发课程，让你熟练掌握移动应用开发技术",
+	"精通各种DOM类应用，熟练掌握面向对象编程思想（OOP）、熟悉JS面向对象开发方式 - 智能课堂 - www.zhinengshe.com",
+	"熟练掌握AJAX技术及相关应用（例如：新浪微博级应用） - 智能课堂 - www.zhinengshe.com",
+	"可以独立写出类似jQuery的小型库（支持各类选择符、事件类、DOM、自定义动画animate、AJAX……） - 智能课堂 - www.zhinengshe.com",
+	"精通JS运动特效技术，能完整实现各类网站所有动画特效，如 智能课堂 官网 - 智能课堂 - www.zhinengshe.com",
+	"掌握JS调试及优化技术、能兼容所有浏览器 - 智能课堂 - www.zhinengshe.com",
+	"精通JS事件对象及事件的工作机制，并能完成各类跨平台应用模块的开发 - 智能课堂 - www.zhinengshe.com",
+	"能独立开发表现和性能都很优秀的RIA应用 - 智能课堂 - www.zhinengshe.com",
+	"了解后台编程的相关知识，能够和后台工程师配合完成大型交互应用 - 智能课堂 - www.zhinengshe.com",
+	"熟悉正则表达式的编写、应用及高级表单验证技术 - 智能课堂 - www.zhinengshe.com" 		
+	 		];
+			var oDiv=document.getElementById('container'); //第一步 先用var把要用的拎出来
+			var ali=oDiv.getElementsByTagName('li');		//  ali是一个数组	
+			var otxt=document.getElementById('div2');  //Id必须用document
+			for ( i = 0; i < ali.length; i++) {		//循环 作用是让每个li元素都执行括号里的代码
+				ali[i].index=i ; 					//数组里每个成员的顺序为i
+				ali[i].onmouseover=function () {		//事件函数
+					for ( i = 0; i < ali.length; i++) {	//循环 作用是让每个ali的成员的className都为空
+						ali[i].className='';			
+					}
+					this.className='towhite';			//this.className  
+														//表示当前发生事件的元素的class变成'towhite'
+					
+					otxt.innerHTML='<h2>'+(this.index+1)+'月活动</h2><p>'+aDatas[this.index]+'</p>';
+				}		//表示把otxt的innerHTML属性变成右边的html语句,(.innerHTML类似于text的value)即
+						//<div id="div2">
+						//<h2>'+(this.index+1)+'月活动</h2>
+						//<p>'+aDatas[this.index]+'</p>'
+						// </div>
+						// this.index表示当前发生事件的元素的顺序或者说位置
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+ 		<div id="div1">
+			<ul>
+					<li ><h2>1</h2><p>一月</p></li>
+					<li><h2>2</h2><p>二月</p></li>
+					<li><h2>3</h2><p>三月</p></li>
+					<li><h2>4</h2><p>四月</p></li>
+					<li><h2>5</h2><p>五月</p></li>
+					<li><h2>6</h2><p>六月</p></li>
+					<li><h2>7</h2><p>七月</p></li>
+					<li><h2>8</h2><p>八月</p></li>
+					<li><h2>9</h2><p>九月</p></li>
+					<li><h2>10</h2><p>十月</p></li>
+					<li><h2>11</h2><p>十一月</p></li>
+					<li><h2>12</h2><p>十二月</p></li>	
+			</ul>
+ 		</div>
+ 		<div id='div2' class="text">
+			<h2></h2>			
+			<p></p>
+ 		</div>
+	</div>
+</body>
+</html>

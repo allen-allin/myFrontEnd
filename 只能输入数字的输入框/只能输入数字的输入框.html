@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+</body>
+<script>
+	var oTxt=document.getElementsByTagName('input')[0];
+	oTxt.onkeydown=function(ev) {
+		var oEvent=ev||event;
+		// alert(oEvent.keyCode)
+		//大键盘的数字键的keyCode为 0-9对应 48-57
+		//小键盘的数字键的keyCode为 0-9对应 96-105
+		var oNum=oEvent.keyCode;
+		//如果用户按的不是大小键盘的数字和退格键，就屏蔽把按键显示在文本框的默认行为
+		 if ((oNum<48&&oNum!=8)||(oNum>57&&oNum<90)||(oNum>105)) {
+		 	return false;
+		 }
+	}
+</script>
+</html>

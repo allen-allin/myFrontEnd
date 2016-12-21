@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 200px;
+			height: 400px;
+			background: gray;
+			display: none;
+			position: absolute;
+		}
+	</style>
+</head>
+<body style="height: 2000px">
+	<div>
+		<ul>
+			<li>aaa</li>
+			<li>bbb</li>
+			<li>ccc</li>
+			<li>ddd</li>
+		</ul>
+	</div>
+</body>
+<script>
+	//获取绝对位置的函数
+	function getPos(event) {
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+		//但凡用到clientX和clientY的地方一定要加scrollTop和scrollLeft
+		return {x:event.clientX+scrollLeft,y:event.clientY+scrollTop}
+	}
+
+	var oDiv=document.getElementsByTagName('div')[0];
+
+	document.oncontextmenu=function(ev) {
+		var oEvent=ev||event;
+		var pos=getPos(oEvent);
+		oDiv.style.display='block';				//单击右键的时候div显示，弹出自定义的右键菜单
+		oDiv.style.left=pos.x+'px';					//div跟着鼠标走
+		oDiv.style.top=pos.y+'px';
+		return false;  //屏蔽默认的右键菜单
+	}
+	document.onclick=function() {
+		oDiv.style.display='none';   //单击页面，div消失
+	}
+
+</script>
+</html>

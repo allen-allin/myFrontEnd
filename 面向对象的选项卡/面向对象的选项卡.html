@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	div {
+		border: 1px black solid;
+		background: gray;
+		display: none;
+		width: 300px;
+		height: 300px;
+	}
+	.box {
+		background: yellow;
+	}
+</style>
+</head>
+<body>
+	<button>选项卡1</button>
+	<button>选项卡2</button>
+	<button>选项卡3</button>
+	<div style="display: block;">div1</div>
+	<div>div2fda fadsfsda4f32sda1fdsa4f6</div>
+	<div>div3大二啊阿凡达啊阿尔 </div>
+<script>
+
+	function TabSwitch() {
+		var _this=this;
+		this.aBtn=document.getElementsByTagName('button');
+		this.aDiv=document.getElementsByTagName('div');
+
+		for (var i = 0; i < this.aBtn.length; i++) {
+			this.aBtn[i].index=i;
+			this.aBtn[i].onclick=function () {
+				_this.fnClick(this);
+			}
+		}
+	}
+	
+
+	TabSwitch.prototype.fnClick=function (aBtn) {
+		// alert(this);
+		for (var i = 0; i < this.aBtn.length; i++) {
+			this.aBtn[i].className='';
+			this.aDiv[i].style.display='none';
+		}
+		aBtn.className='box';
+		this.aDiv[aBtn.index].style.display='block';
+	}
+
+	var obj=new TabSwitch();
+</script>
+</body>
+</html>
